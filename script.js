@@ -470,11 +470,38 @@ incluirFijoCheckbox.addEventListener('change', function() {
     updatePreviewInRealTime();
 });
 
-// Función para actualizar la vista previa en tiempo real
+// Función para validar si el formulario está completo
+function isFormComplete() {
+    const template = templateSelect.value;
+    const nombre = nombreInput.value.trim();
+    const cedula = cedulaInput.value.trim();
+    const direccion = direccionInput.value.trim();
+    const valor = valorInput.value;
+    const nombreAsesor = nombreAsesorInput.value.trim();
+    const numeroTelefono = numeroTelefonoInput.value.trim();
+
+    // Validaciones básicas
+    if (!template || !nombre || !cedula) {
+        return false;
+    }
+
+    // Validaciones específicas por plantilla
+    if (template === 'nip') {
+        return nombreAsesor && numeroTelefono;
+    } else if (template === 'cambio-duo' || template === 'cambio-trio') {
+        return direccion && valor;
+    }
+
+    return false;
+}
+
+// Función para actualizar la vista previa solo cuando el formulario esté completo
 function updatePreviewInRealTime() {
-    const message = generateMessage();
-    if (message) {
-        showPreview(message);
+    if (isFormComplete()) {
+        const message = generateMessage();
+        if (message) {
+            showPreview(message);
+        }
     } else {
         preview.style.display = 'none';
         currentMessage = '';
