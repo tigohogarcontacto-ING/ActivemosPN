@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviador de Mensajes WhatsApp - Tigo Hogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1><i class="fas fa-mobile-alt"></i> Enviador de Mensajes WhatsApp</h1>
+                    <p>Herramienta para enviar plantillas personalizadas de Tigo Hogar</p>
+                </div>
+                <div class="user-info">
+                    <span id="userName">Usuario</span>
+                    <button id="logoutBtn" class="btn-logout" title="Cerrar Sesión">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <form id="messageForm" class="form-container">
+                <div class="form-group">
+                    <label for="template">Selecciona una plantilla:</label>
+                    <select id="template" name="template" required>
+                        <option value="">-- Selecciona una plantilla --</option>
+                        <option value="nip">NIP</option>
+                        <option value="cambio-duo">Cambio Full Tigo Duo</option>
+                        <option value="cambio-trio">Cambio Full Tigo Trio</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del cliente:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula">Número de cédula:</label>
+                        <input type="text" id="cedula" name="cedula" placeholder="Ej: 12345678" required>
+                    </div>
+                </div>
+
+                <div class="form-row" id="nipFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="nombreAsesor">Nombre del asesor:</label>
+                        <input type="text" id="nombreAsesor" name="nombreAsesor" placeholder="Ej: Felipe">
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroTelefono">Número de teléfono:</label>
+                        <input type="tel" id="numeroTelefono" name="numeroTelefono" placeholder="Ej: +57 573102831423">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle 123 #45-67, Bogotá" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Valor del servicio:</label>
+                    <div class="input-group">
+                        <span class="currency">$</span>
+                        <input type="number" id="valor" name="valor" placeholder="0" min="0" step="100" required>
+                    </div>
+                </div>
+
+                <div class="form-group" id="fijoGroup" style="display: none;">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="incluirFijo" name="incluirFijo">
+                        <span class="checkmark"></span>
+                        Incluir fijo (suma $5,000 al valor)
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Número de WhatsApp (opcional):</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ej: +573001234567">
+                    <small>Si no ingresas número, se abrirá WhatsApp Web para que copies el mensaje</small>
+                </div>
+
+                <button type="submit" class="btn-send">
+                    <i class="fab fa-whatsapp"></i> Generar y Abrir WhatsApp
+                </button>
+            </form>
+
+            <div id="preview" class="preview-container" style="display: none;">
+                <h3><i class="fas fa-eye"></i> Vista Previa del Mensaje</h3>
+                <div class="message-preview">
+                    <div class="whatsapp-bubble">
+                        <div id="messageContent"></div>
+                    </div>
+                </div>
+                <div class="preview-actions">
+                    <button id="copyMessage" class="btn-copy">
+                        <i class="fas fa-copy"></i> Copiar Mensaje
+                    </button>
+                    <button id="testEmojis" class="btn-test">
+                        <i class="fas fa-bug"></i> Probar Emojis
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Tigo Hogar - Equipo Vivi</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

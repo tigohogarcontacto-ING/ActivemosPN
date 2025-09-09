@@ -1,0 +1,445 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 960px;
+    width: 100%;
+    padding: 32px;
+}
+
+/* Tarjeta de login */
+.login-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+    padding: 48px;
+    border-radius: 24px;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.18);
+    backdrop-filter: blur(10px);
+    animation: slideInLeft 0.6s ease-out;
+    width: 100%;
+    max-width: 640px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #25D366;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.login-header h1 i {
+    margin-right: 15px;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    color: #666;
+    z-index: 1;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #25D366;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.toggle-password:hover {
+    color: #25D366;
+}
+
+/* Botón de login */
+.btn-login {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+.btn-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Mensaje de error */
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #f5c6cb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+.error-message i {
+    color: #dc3545;
+}
+
+/* Footer */
+.login-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e5e9;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Información de usuarios */
+/* Se eliminó el panel de usuarios por privacidad */
+
+.users-info h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #25D366;
+    transition: all 0.3s ease;
+}
+
+.user-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.user-item i {
+    color: #25D366;
+    font-size: 1.1rem;
+}
+
+.user-item span {
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+}
+
+.user-item small {
+    color: #666;
+    font-family: 'Courier New', monospace;
+    background: #e9ecef;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.password-info {
+    text-align: center;
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #c3e6cb;
+    font-size: 0.9rem;
+}
+
+.password-info strong {
+    font-family: 'Courier New', monospace;
+    background: #c3e6cb;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Animaciones */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 16px;
+    }
+    
+    .login-card {
+        padding: 28px;
+        max-width: 520px;
+    }
+    
+    .login-header h1 {
+        font-size: 2rem;
+    }
+    
+    .users-info {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .login-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .input-group input {
+        padding: 14px 14px 14px 44px;
+    }
+    
+    .btn-login {
+        padding: 14px 22px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-card {
+        max-width: 720px;
+    }
+}
+
+/* Mejoras de accesibilidad */
+button:focus,
+input:focus {
+    outline: 2px solid #25D366;
+    outline-offset: 2px;
+}
+
+/* Modal de bienvenida */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.welcome-modal {
+    background: white;
+    width: min(92vw, 540px);
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+    text-align: center;
+    transform: translateY(6px);
+    animation: popIn 0.25s ease-out;
+}
+
+.welcome-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.badge {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+}
+
+.welcome-modal h2 {
+    margin: 8px 0 6px;
+    font-size: 1.6rem;
+    color: #222;
+}
+
+.welcome-modal p {
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.btn-continue {
+    background: #25D366;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-continue:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(37,211,102,0.35);
+}
+
+.modal-overlay.closing {
+    animation: fadeOut 0.22s ease-in forwards;
+}
+
+@keyframes popIn {
+    from { transform: translateY(12px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+/* Estilos para el scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #25D366;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #128C7E;
+}
