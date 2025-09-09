@@ -6,13 +6,6 @@ Una aplicación web moderna y segura para enviar mensajes personalizados de What
 
 La aplicación está protegida con un sistema de login que permite acceso solo a usuarios autorizados.
 
-### **Usuarios Autorizados:**
-- **Alejandro Zapata** - Cédula: 1088033658
-- **Yhonatan Avila** - Cédula: 1000974424  
-- **Felipe Loaiza** - Cédula: 1113860034
-
-**Contraseña para todos:** `12345678`
-
 ### **Características de Seguridad:**
 - ✅ **Contraseñas encriptadas** - Hash seguro con salt personalizado
 - ✅ **Sesiones de 8 horas** - Se expiran automáticamente
