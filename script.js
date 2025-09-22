@@ -12,12 +12,12 @@ Quedo atento a tu pronta respuesta. ¡Muchas gracias!`,
 
 Desde Tigo Hogar queremos darte una excelente noticia. Tu servicio en la dirección [Dirección], identificado con cédula [Número de cédula], tendrá una reducción en el valor mensual.
 
-A partir de tu próxima factura pagarás solo $[Valor X] ✅. Ten presente que tu plan y los servicios que disfrutas se mantienen exactamente igual, lo único que cambia es el precio, que ahora será más bajo.
+Actualmente pagas $[Valor actual], pero a partir de tu próxima factura pagarás solo $[Valor X] ✅. Ten presente que tu plan y los servicios que disfrutas se mantienen exactamente igual, lo único que cambia es el precio, que ahora será más bajo.
 
 👉 Para estar al día con tu servicio, realiza tu pago de forma rápida y segura desde la app Mi Tigo. Descárgala aquí:
 
-📲 Google Play (Android) https://play.google.com/store/apps/details?id=com.juvomobileinc.tigoshop.co
-📲 App Store (iPhone) https://apps.apple.com/co/app/mi-tigo/id1512395563
+📲 Google Play (Android): https://play.google.com/store/apps/details?id=com.juvomobileinc.tigoshop.co
+📲 App Store (iPhone): https://apps.apple.com/co/app/mi-tigo/id1512395563
 
 ¡Gracias por seguir confiando en nosotros! 💙`,
 
@@ -25,14 +25,56 @@ A partir de tu próxima factura pagarás solo $[Valor X] ✅. Ten presente que t
 
 Desde Tigo Hogar queremos darte una excelente noticia. Tu servicio en la dirección [Dirección], identificado con cédula [Número de cédula], tendrá una reducción en el valor mensual.
 
-A partir de tu próxima factura pagarás solo $[Valor X] ✅. Ten presente que tu plan y los servicios que disfrutas se mantienen exactamente igual, lo único que cambia es el precio, que ahora será más bajo.
+Actualmente pagas $[Valor actual], pero a partir de tu próxima factura pagarás solo $[Valor X] ✅. Ten presente que tu plan y los servicios que disfrutas se mantienen exactamente igual, lo único que cambia es el precio, que ahora será más bajo.
 
 👉 Para estar al día con tu servicio, realiza tu pago de forma rápida y segura desde la app Mi Tigo. Descárgala aquí:
 
-📲 Google Play (Android) https://play.google.com/store/apps/details?id=com.juvomobileinc.tigoshop.co
-📲 App Store (iPhone) https://apps.apple.com/co/app/mi-tigo/id1512395563
+📲 Google Play (Android): https://play.google.com/store/apps/details?id=com.juvomobileinc.tigoshop.co
+📲 App Store (iPhone): https://apps.apple.com/co/app/mi-tigo/id1512395563
 
-¡Gracias por seguir confiando en nosotros! 💙`
+¡Gracias por seguir confiando en nosotros! 💙`,
+
+    'ofrecer-duo': `Hola [Nombre del cliente] 👋,
+
+Te cuento algo importante: en la dirección [Dirección], con cédula [Número de cédula], hoy pagas $[Valor actual], pero tienes la oportunidad de quedarte con un plan mucho más completo y económico.
+
+👉 Con el PLAN FULL TIGO DÚO tendrás:
+✅ Internet de 500 megas (bajada 500 / subida 15).
+✅ Plan pospago con llamadas ilimitadas a Colombia, EE. UU., Canadá y Puerto Rico.
+✅ SMS ilimitados nacionales.
+✅ Navegación ilimitada con 15 GB para compartir.
+✅ App MAX Lite GRATIS por 12 meses.
+
+Todo por solo $[Valor X]/mes (menos de lo que pagas ahora).
+
+⚡ Esta oferta aplica directamente a tu línea y no requiere trámites adicionales.
+Solo necesito tu confirmación para activarlo.
+
+👉 Si quieres disfrutarlo desde ya, responde a este mensaje con la palabra:
+
+ACEPTO 💙`,
+
+    'ofrecer-trio': `Hola [Nombre del cliente] 👋,
+
+Tu servicio en la dirección [Dirección], con cédula [Número de cédula], hoy cuesta $[Valor actual], pero puedes acceder a un plan superior por un menor precio.
+
+👉 Con el PLAN FULL TIGO TRÍO recibes:
+✅ Internet de 500 megas (500 de bajada / 15 de subida).
+✅ TV Avanzada con 202 canales.
+✅ Plan pospago con llamadas ilimitadas a Colombia, EE. UU., Canadá y Puerto Rico.
+✅ SMS ilimitados nacionales.
+✅ Navegación ilimitada con 15 GB para compartir.
+✅ App MAX Lite GRATIS por 12 meses.
+✅ Canal Win+ Fútbol HD y App Win Play GRATIS por 12 meses.
+
+Todo por solo $[Valor X]/mes, menos de lo que estás pagando actualmente.
+
+⚡ Esta mejora aplica directamente a tu servicio y está disponible solo por tiempo limitado.
+No pierdas la oportunidad de pagar menos y tener más.
+
+👉 Para activarlo ahora mismo, solo responde con la palabra:
+
+ACEPTO 💙`
 };
 
 // Variables globales
@@ -45,6 +87,8 @@ const nombreInput = document.getElementById('nombre');
 const cedulaInput = document.getElementById('cedula');
 const direccionInput = document.getElementById('direccion');
 const valorInput = document.getElementById('valor');
+const valorActualInput = document.getElementById('valorActual');
+const valorActualGroup = document.getElementById('valorActualGroup');
 const telefonoInput = document.getElementById('telefono');
 const nombreAsesorInput = document.getElementById('nombreAsesor');
 const numeroTelefonoInput = document.getElementById('numeroTelefono');
@@ -86,6 +130,7 @@ function generateMessage() {
     const cedula = cedulaInput.value.trim();
     const direccion = direccionInput.value.trim();
     const valor = valorInput.value;
+    const valorActual = valorActualInput ? valorActualInput.value : '';
     const nombreAsesor = nombreAsesorInput.value.trim();
     const numeroTelefono = numeroTelefonoInput.value.trim();
 
@@ -99,8 +144,8 @@ function generateMessage() {
         if (!nombreAsesor || !numeroTelefono) {
             return '';
         }
-    } else if (template === 'cambio-duo' || template === 'cambio-trio') {
-        if (!direccion || !valor) {
+    } else if (template === 'cambio-duo' || template === 'cambio-trio' || template === 'ofrecer-duo' || template === 'ofrecer-trio') {
+        if (!direccion || !valor || !valorActual) {
             return '';
         }
     }
@@ -118,13 +163,18 @@ function generateMessage() {
         message = message.replace(/\[Nombre del cliente\]/g, nombre);
         message = message.replace(/\[Número de cédula\]/g, cedula);
         
+        // Formatear valores en formato COP
+        const formattedValor = formatCurrencyCOP(valor);
+        const formattedValorActual = formatCurrencyCOP(valorActual);
+
         // Reemplazar placeholders específicos según la plantilla
         if (template === 'nip') {
             message = message.replace(/\[Nombre del asesor\]/g, nombreAsesor);
             message = message.replace(/\[Número de teléfono\]/g, numeroTelefono);
         } else {
             message = message.replace(/\[Dirección\]/g, direccion);
-            message = message.replace(/\[Valor X\]/g, valor);
+            message = message.replace(/\[Valor actual\]/g, formattedValorActual);
+            message = message.replace(/\[Valor X\]/g, formattedValor);
         }
 
         return message;
@@ -132,6 +182,12 @@ function generateMessage() {
         console.error('Error al generar mensaje:', error);
         return '';
     }
+}
+
+// Formatea números a moneda COP sin símbolo, con separador de miles por punto
+function formatCurrencyCOP(value) {
+    const number = Number(String(value).replace(/[^\d-]/g, '')) || 0;
+    return new Intl.NumberFormat('es-CO').format(number);
 }
 
 // Función para mostrar vista previa
@@ -365,12 +421,25 @@ function showValidationError() {
             valorInput.focus();
             return;
         }
+        if (!valorActualInput.value) {
+            alert('Por favor, ingresa el valor actual.');
+            valorActualInput.focus();
+            return;
+        }
     }
     
     alert('Por favor, completa todos los campos requeridos.');
 }
 
 // Función para abrir WhatsApp con el mensaje
+function buildWhatsAppUrl(phone, message) {
+    const normalized = (message || '').normalize('NFC');
+    const url = new URL('https://api.whatsapp.com/send');
+    if (phone) url.searchParams.set('phone', phone);
+    url.searchParams.set('text', normalized);
+    return url.toString();
+}
+
 function openWhatsAppWithMessage(message) {
     const phone = telefonoInput.value.trim();
     
@@ -378,9 +447,8 @@ function openWhatsAppWithMessage(message) {
         // Si hay número de teléfono, abrir chat directo
         const formattedPhone = formatPhoneNumber(phone);
         
-        // Codificar el mensaje correctamente para preservar emojis
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodedMessage}`;
+        // Construir URL usando API oficial y normalización para preservar emojis
+        let whatsappUrl = buildWhatsAppUrl(formattedPhone, message);
         
         // Abrir en nueva ventana
         const newWindow = window.open(whatsappUrl, '_blank');
@@ -388,6 +456,14 @@ function openWhatsAppWithMessage(message) {
         // Verificar si se abrió correctamente
         if (!newWindow) {
             alert('No se pudo abrir WhatsApp. Por favor, permite ventanas emergentes o copia el mensaje manualmente desde la vista previa.');
+        } else {
+            // Fallback: si el navegador bloquea api.whatsapp.com, intentar con wa.me
+            setTimeout(() => {
+                if (newWindow.closed) return;
+                try {
+                    // no-op
+                } catch (_) {}
+            }, 100);
         }
     } else {
         // Si no hay número, abrir WhatsApp Web para copiar manualmente
@@ -406,9 +482,9 @@ function calculateValue() {
     const template = templateSelect.value;
     const incluirFijo = incluirFijoCheckbox.checked;
     
-    if (template === 'cambio-duo') {
+    if (template === 'cambio-duo' || template === 'ofrecer-duo') {
         return incluirFijo ? '119900' : '109900';
-    } else if (template === 'cambio-trio') {
+    } else if (template === 'cambio-trio' || template === 'ofrecer-trio') {
         return incluirFijo ? '144900' : '139900';
     }
     return '';
@@ -423,11 +499,13 @@ function toggleFieldsByTemplate() {
         direccionInput.closest('.form-group').style.display = 'none';
         valorInput.closest('.form-group').style.display = 'none';
         fijoGroup.style.display = 'none';
-    } else if (template === 'cambio-duo' || template === 'cambio-trio') {
+        if (valorActualGroup) valorActualGroup.style.display = 'none';
+    } else if (template === 'cambio-duo' || template === 'cambio-trio' || template === 'ofrecer-duo' || template === 'ofrecer-trio') {
         nipFields.style.display = 'none';
         direccionInput.closest('.form-group').style.display = 'block';
         valorInput.closest('.form-group').style.display = 'block';
         fijoGroup.style.display = 'block';
+        if (valorActualGroup) valorActualGroup.style.display = 'block';
         valorInput.readOnly = true;
         incluirFijoCheckbox.checked = true; // Marcar el checkbox por defecto
         updateValue();
@@ -436,6 +514,7 @@ function toggleFieldsByTemplate() {
         direccionInput.closest('.form-group').style.display = 'block';
         valorInput.closest('.form-group').style.display = 'block';
         fijoGroup.style.display = 'none';
+        if (valorActualGroup) valorActualGroup.style.display = 'none';
         valorInput.value = '';
         valorInput.readOnly = false;
     }
@@ -458,7 +537,7 @@ templateSelect.addEventListener('change', function() {
 
 
 // Actualizar vista previa en tiempo real cuando cambien los campos
-[nombreInput, cedulaInput, direccionInput, valorInput, nombreAsesorInput, numeroTelefonoInput, templateSelect].forEach(input => {
+[nombreInput, cedulaInput, direccionInput, valorInput, valorActualInput, nombreAsesorInput, numeroTelefonoInput, templateSelect].forEach(input => {
     input.addEventListener('input', function() {
         updatePreviewInRealTime();
     });
@@ -477,6 +556,7 @@ function isFormComplete() {
     const cedula = cedulaInput.value.trim();
     const direccion = direccionInput.value.trim();
     const valor = valorInput.value;
+    const valorActual = valorActualInput ? valorActualInput.value.trim() : '';
     const nombreAsesor = nombreAsesorInput.value.trim();
     const numeroTelefono = numeroTelefonoInput.value.trim();
 
@@ -488,8 +568,8 @@ function isFormComplete() {
     // Validaciones específicas por plantilla
     if (template === 'nip') {
         return nombreAsesor && numeroTelefono;
-    } else if (template === 'cambio-duo' || template === 'cambio-trio') {
-        return direccion && valor;
+    } else if (template === 'cambio-duo' || template === 'cambio-trio' || template === 'ofrecer-duo' || template === 'ofrecer-trio') {
+        return direccion && valor && valorActual;
     }
 
     return false;
